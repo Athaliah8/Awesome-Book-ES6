@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable max-classes-per-file */
 import { DateTime } from './modules/luxon.js';
-import StoreBookData  from './modules/storage.js';
+import StoreBookData from './modules/storage.js';
 import Book from './modules/book.js';
 
 const liList = document.getElementById('li-list');
@@ -32,34 +32,33 @@ liContact.addEventListener('click', (e) => {
   list.style.display = 'none';
 });
 
-
 const dateElement = document.getElementById('date');
 
 const date = DateTime.now();
 dateElement.textContent = date.toLocaleString(DateTime.DATETIME_MED);
 
 class Layout {
-    static displayBooks() {
-      const storedBooks = StoreBookData.getBooksData();
-      storedBooks.map((book) => Layout.bookList(book));
-    }
-  
-    static bookList(book) {
-      const collection = document.getElementById('collection');
-      collection.innerHTML += `
+  static displayBooks() {
+    const storedBooks = StoreBookData.getBooksData();
+    storedBooks.map((book) => Layout.bookList(book));
+  }
+
+  static bookList(book) {
+    const collection = document.getElementById('collection');
+    collection.innerHTML += `
       <li id='${book.id}' class='listItem'>
         <p>"${book.title}" by ${book.author} </p>
         <button id='delete' type='button' onclick ='Layout.deleteBook(${book.id})'>Remove</button>
       </li>
   `;
-    }
-  
-    static deleteBook(bookId) {
-      StoreBookData.removeBook(bookId);
-      const booksId = document.getElementById(bookId);
-      booksId.remove();
-    }
-  }  
+  }
+
+  static deleteBook(bookId) {
+    StoreBookData.removeBook(bookId);
+    const booksId = document.getElementById(bookId);
+    booksId.remove();
+  }
+}
 
 document.addEventListener('DOMContentLoaded', Layout.displayBooks);
 
