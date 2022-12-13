@@ -4,6 +4,7 @@ import { DateTime } from './modules/luxon.js';
 import StoreBookData from './modules/storage.js';
 import Book from './modules/book.js';
 
+
 const liList = document.getElementById('li-list');
 const liAdd = document.getElementById('li-add');
 const liContact = document.getElementById('li-contact');
@@ -40,15 +41,17 @@ dateElement.textContent = date.toLocaleString(DateTime.DATETIME_MED);
 class Layout {
   static displayBooks() {
     const storedBooks = StoreBookData.getBooksData();
-    storedBooks.map((book) => Layout.bookList(book));
+    return storedBooks.map((book) => Layout.bookList(book));
   }
 
   static bookList(book) {
+    // console.log(Layout.deleteBook(book.id))
     const collection = document.getElementById('collection');
-    collection.innerHTML += `
+    
+    return collection.innerHTML += `
       <li id='${book.id}' class='listItem'>
         <p>"${book.title}" by ${book.author} </p>
-        <button id='delete' type='button' onclick ='Layout.deleteBook(${book.id})'>Remove</button>
+        <button id='delete' type='button' value='${book.id}' onclick ='Layout.deleteBook(${book.id})'>Remove</button>
       </li>
   `;
   }
@@ -56,7 +59,8 @@ class Layout {
   static deleteBook(bookId) {
     StoreBookData.removeBook(bookId);
     const booksId = document.getElementById(bookId);
-    booksId.remove();
+    
+    return booksId.remove();
   }
 }
 
@@ -72,6 +76,9 @@ document.getElementById('form').addEventListener('submit', (e) => {
     const book = new Book(id, title, author);
     Layout.bookList(book);
     StoreBookData.addBook(book);
+    console.log(document.getElementById("delete").value)
     document.getElementById('form').reset();
   }
 });
+
+window.Layout = Layout;
