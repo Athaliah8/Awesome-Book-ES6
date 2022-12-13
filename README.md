@@ -110,7 +110,7 @@ Example command:
 Clone this repository to your desired folder:
 
 ```
-git clone git@github.com:SabiMantock/capstone_project.git
+git clone https://github.com/Athaliah8/Awesome-Book-ES6.git
 ```
 
 Open a index.html file with your code editor of your choice and/or a browser of your choice.
