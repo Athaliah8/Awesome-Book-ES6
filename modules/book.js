@@ -5,3 +5,6 @@ class Book {
       this.author = author;
     }
   }
+
+
+  export default Book;

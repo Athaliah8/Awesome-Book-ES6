@@ -2,7 +2,6 @@ body {
     margin: 0;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
-    background-color: #d80000;
   }
   
   input {
@@ -65,7 +64,7 @@ body {
   #date{
     float: right;
       margin-top: 8px;
-      font-size: 12px;
+      font-size: 16px;
       margin-right: 10px;
   }
   .collection {
