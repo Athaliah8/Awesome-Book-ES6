@@ -12,7 +12,6 @@ class StoreBookData {
   static addBook(book) {
     const books = StoreBookData.getBooksData();
     books.push(book);
-    console.log(book)
     localStorage.setItem('books', JSON.stringify(books));
   }
 

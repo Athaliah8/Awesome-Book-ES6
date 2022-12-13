@@ -4,7 +4,6 @@ import { DateTime } from './modules/luxon.js';
 import StoreBookData from './modules/storage.js';
 import Book from './modules/book.js';
 
-
 const liList = document.getElementById('li-list');
 const liAdd = document.getElementById('li-add');
 const liContact = document.getElementById('li-contact');
@@ -45,10 +44,8 @@ class Layout {
   }
 
   static bookList(book) {
-    // console.log(Layout.deleteBook(book.id))
     const collection = document.getElementById('collection');
-    
-    return collection.innerHTML += `
+    collection.innerHTML += `
       <li id='${book.id}' class='listItem'>
         <p>"${book.title}" by ${book.author} </p>
         <button id='delete' type='button' value='${book.id}' onclick ='Layout.deleteBook(${book.id})'>Remove</button>
@@ -59,7 +56,7 @@ class Layout {
   static deleteBook(bookId) {
     StoreBookData.removeBook(bookId);
     const booksId = document.getElementById(bookId);
-    
+
     return booksId.remove();
   }
 }
@@ -76,7 +73,6 @@ document.getElementById('form').addEventListener('submit', (e) => {
     const book = new Book(id, title, author);
     Layout.bookList(book);
     StoreBookData.addBook(book);
-    console.log(document.getElementById("delete").value)
     document.getElementById('form').reset();
   }
 });
